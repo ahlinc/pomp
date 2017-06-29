@@ -49,8 +49,8 @@ class UrllibDownloader(BaseDownloader):
     WORKER_CLASS = UrllibDownloadWorker
 
     def __init__(self, timeout=None):
-        super(UrllibDownloader, self).__init__()
-        self.worker = UrllibDownloadWorker(timeout=timeout)
+        super(self.WORKER_CLASS, self).__init__()
+        self.worker = self.WORKER_CLASS(timeout=timeout)
 
     def process(self, crawler, request):
         return self.worker.process(request)
